@@ -1,0 +1,215 @@
+/* ===================================================================
+   Botonera de Sonidos - estilos
+   =================================================================== */
+
+@font-face {
+	font-family: 'ArmyRust';
+	src: url('../fonts/army_rust/ARMY RUST.ttf') format('truetype');
+}
+
+:root {
+	--verde: #4CAF50;
+	--verde-claro: #e8f5e9;
+	--texto: #1f2933;
+	--gris: #6b7280;
+	--borde: #e5e7eb;
+	--fondo: #f0f0f0;
+	--activo: #007bff;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: var(--fondo);
+	color: var(--texto);
+	margin: 0;
+	padding: 16px;
+	text-align: center;
+}
+
+/* El sitio entero scrollea con la pagina. Antes el body tenia
+   overflow:hidden y un div scrolleable, que en movil se rompe con la
+   barra del navegador y con el teclado al buscar. */
+
+.envoltura {
+	max-width: 640px;
+	margin: 0 auto;
+}
+
+.imagen {
+	width: 100%;
+	max-width: 260px;
+	/* margin auto a los lados: sin esto el bloque se queda pegado a la
+	   izquierda. El text-align:center del body NO centra un div. */
+	margin: 0 auto 18px;
+}
+
+.imagen img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+h1 {
+	font-family: 'ArmyRust', sans-serif;
+	font-size: 30px;
+	color: var(--verde);
+	margin: 0 0 4px;
+}
+
+.subtitulo {
+	color: var(--gris);
+	font-size: 14px;
+	margin: 0 0 20px;
+}
+
+/* --- Buscador --- */
+
+.buscador {
+	position: relative;
+	margin-bottom: 14px;
+}
+
+.buscador input {
+	width: 100%;
+	padding: 13px 14px 13px 40px;
+	font-size: 16px;
+	color: var(--texto);
+	background: #fff;
+	border: 1px solid var(--borde);
+	border-radius: 10px;
+	/* 16px evita el zoom automatico de iOS al enfocar */
+	outline: none;
+}
+
+.buscador input:focus {
+	border-color: var(--verde);
+}
+
+.buscador .lupa {
+	position: absolute;
+	left: 14px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: var(--gris);
+	pointer-events: none;
+	font-size: 15px;
+}
+
+.contador {
+	font-size: 13px;
+	color: var(--gris);
+	margin: 0 0 12px;
+	min-height: 18px;
+}
+
+/* --- Botones --- */
+
+.botones {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	gap: 10px;
+}
+
+.boton {
+	position: relative;
+	background-color: var(--activo);
+	color: #fff;
+	padding: 14px 12px;
+	border: none;
+	border-radius: 10px;
+	font-size: 15px;
+	font-family: inherit;
+	cursor: pointer;
+	transition: background-color .15s ease, transform .08s ease;
+	min-height: 52px;
+	/* Al tocar en movil, sin el brillo azul por defecto */
+	-webkit-tap-highlight-color: transparent;
+	user-select: none;
+}
+
+.boton:hover {
+	background-color: #0056b3;
+}
+
+.boton:active {
+	transform: scale(.97);
+}
+
+.boton.sonando {
+	background-color: var(--verde);
+}
+
+/* Punto verde mientras suena */
+.boton.sonando::before {
+	content: '';
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #fff;
+	animation: latir 1s ease-in-out infinite;
+}
+
+@keyframes latir {
+
+	0%,
+	100% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: .3;
+	}
+}
+
+.boton:focus-visible {
+	outline: 3px solid var(--verde);
+	outline-offset: 2px;
+}
+
+.vacio {
+	padding: 34px 16px;
+	color: var(--gris);
+	font-size: 15px;
+}
+
+.vacio strong {
+	display: block;
+	color: var(--texto);
+	font-size: 17px;
+	margin-bottom: 6px;
+}
+
+.pie {
+	margin-top: 28px;
+	padding-top: 16px;
+	border-top: 1px solid var(--borde);
+	color: var(--gris);
+	font-size: 12.5px;
+}
+
+@media (max-width: 420px) {
+	body {
+		padding: 12px;
+	}
+
+	h1 {
+		font-size: 23px;
+	}
+
+	.botones {
+		grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+		gap: 8px;
+	}
+
+	.boton {
+		padding: 12px 8px;
+		font-size: 14px;
+	}
+}

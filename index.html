@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Botonera de Sonidos</title>
+	<meta name="description" content="Botonera de sonidos del Equipo Verde">
+	<link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+	<div class="envoltura">
+
+		<div class="imagen">
+			<img src="img/image.png" alt="">
+		</div>
+
+		<h1>Botonera de Sonidos</h1>
+		<p class="subtitulo">Equipo Verde</p>
+
+		<div class="buscador">
+			<span class="lupa" aria-hidden="true">&#9906;</span>
+			<input id="buscar" type="search" placeholder="Buscar sonido..."
+				autocomplete="off" autocapitalize="off" spellcheck="false"
+				aria-label="Buscar sonido">
+		</div>
+
+		<p class="contador" id="contador"></p>
+
+		<div class="botones" id="botones"></div>
+
+		<div class="vacio" id="vacio" style="display:none">
+			<strong>Nada coincide</strong>
+			Prueba con otra palabra.
+		</div>
+
+		<p class="pie">
+			Un tap reproduce, el siguiente detiene.<br>
+			Puedes usar varios sonidos a la vez. Presiona <strong>/</strong> para buscar.
+		</p>
+
+	</div>
+
+	<script src="js/sonidos.js"></script>
+	<script src="js/app.js"></script>
+
+</body>
+
+</html>
